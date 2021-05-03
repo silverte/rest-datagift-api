@@ -8,10 +8,10 @@ spring:
     active: local
 
 mybatis:
-  type-aliases-package: com.skcc.template.rest.sample_domain.core.domain.entity
+  type-aliases-package: com.skcc.product.rest.datagift.core.domain.entity
   mapper-locations: db/**/*.xml
   configuration:
-    map-underscore-to-camel-case: on
+    map-underscore-to-camel-case: true
 
 
 logging:

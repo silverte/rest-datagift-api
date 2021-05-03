@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
-	<groupId>com.skcc.template.rest</groupId>
+	<groupId>com.skcc.product.rest</groupId>
 	<artifactId>rest-domain-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rest-domain-api</name>
