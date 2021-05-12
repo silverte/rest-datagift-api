@@ -9,5 +9,5 @@ class RestDataGiftApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
+	
 }

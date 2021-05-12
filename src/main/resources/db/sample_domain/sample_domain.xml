@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.skcc.product.rest.datagift.core.port_infra.persistent.mybatis.IMybatisDataGiftMapper">
-    <select id="findById" resultType="SampleDomainAggregate">
+    <select id="findById" resultType="DataGiftAggregate">
         SELECT id
               , sample_data1
               , sample_data2
@@ -9,7 +9,7 @@
          WHERE ID = #{id}
     </select>
 
-    <select id="findAll" resultType="SampleDomainAggregate">
+    <select id="findAll" resultType="DataGiftAggregate">
         SELECT id
               , sample_data1
               , sample_data2
@@ -17,7 +17,7 @@
         WHERE 1=1
     </select>
 
-    <insert id="save" parameterType="SampleDomainAggregate">
+    <insert id="save" parameterType="DataGiftAggregate">
           INSERT INTO SAMPLE_DOMAIN (
                   id
               , sample_data1
@@ -26,7 +26,7 @@
           VALUES (#{id}, #{sampleData1}, #{sampleData2})
     </insert>
 
-    <update id="update" parameterType="SampleDomainAggregate">
+    <update id="update" parameterType="DataGiftAggregate">
           UPDATE SAMPLE_DOMAIN
           SET    id = #{id}
                   , sample_data1 = #{sampleData1}
