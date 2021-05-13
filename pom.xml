@@ -10,7 +10,7 @@
 	</parent>
 	
 	<groupId>com.skcc.product.rest</groupId>
-	<artifactId>rest-domain-api</artifactId>
+	<artifactId>rest-datagift-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rest-domain-api</name>
 	<description>Template project for MSA based Rest API</description>
