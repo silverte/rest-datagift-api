@@ -3,11 +3,11 @@ package com.skcc.product.rest.datagift.core.domain;
 import com.skcc.product.rest.datagift.core.domain.enums.ProductGroup;
 
 public class DataGift {
-	DataGiftStrategy delegate;
-	DonorServiceInfo serviceInfo;
-	ProductRule rule;
-	DataGiftLimit limit;
-	DataGiftSendHistrory history;
+	private DataGiftStrategy delegate;
+	private DonorServiceInfo serviceInfo;
+	private ProductRule rule;
+	private DataGiftLimit limit;
+	private DataGiftSendHistrory history;
 	
 	public DataGift(DonorServiceInfo serviceInfo) {
 		this.serviceInfo = serviceInfo;
@@ -31,5 +31,7 @@ public class DataGift {
 	public DataGiftLimit getSendCountLimit(ProductGroup productGroup) {
 		return limit.getSendCountLimit(productGroup);
 	}
+	
+	public Data
 
 }

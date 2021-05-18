@@ -7,7 +7,7 @@ import com.querydsl.jpa.JPQLQuery;
 import com.skcc.product.rest.datagift.core.application.object.query.DataGiftQueryRequestDTO.SampleDomainKeyType;
 import com.skcc.product.rest.datagift.core.domain.entity.DataGiftAggregate;
 import com.skcc.product.rest.datagift.core.domain.entity.QDataGiftAggregate;
-import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftQueryRepository;
+import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftCustomQueryRepository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Repository
-public class DataGiftQueryDslRepository extends QuerydslRepositorySupport implements IDataGiftQueryRepository {
+public class DataGiftQueryDslRepository extends QuerydslRepositorySupport implements IDataGiftCustomQueryRepository {
 
     public DataGiftQueryDslRepository() {
         super(DataGiftAggregate.class);

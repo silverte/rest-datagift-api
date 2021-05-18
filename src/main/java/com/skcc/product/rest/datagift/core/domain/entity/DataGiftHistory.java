@@ -3,6 +3,7 @@ package com.skcc.product.rest.datagift.core.domain.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "ZORD_DATA_GIFT_HST")
 @Builder
+@IdClass(DataGiftHistoryId.class)
 
 public class DataGiftHistory extends AbstractAuditEntity {
 	
