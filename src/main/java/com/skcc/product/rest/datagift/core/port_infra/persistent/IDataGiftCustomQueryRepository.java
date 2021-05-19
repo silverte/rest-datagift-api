@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.querydsl.core.QueryResults;
+import com.querydsl.core.Tuple;
 import com.skcc.product.rest.datagift.core.application.object.query.DataGiftQueryRequestDTO.SampleDomainKeyType;
 import com.skcc.product.rest.datagift.core.domain.entity.DataGiftAggregate;
 
@@ -17,4 +19,6 @@ public interface IDataGiftCustomQueryRepository {
     public Page<DataGiftAggregate> searchAllOr(final List<SampleDomainKeyType> searchKeys
                                                     , final List<String> searchvalues
                                                     , final Pageable pageable );
+    
+    public QueryResults<Tuple> getMonthDataGiftSendHistoryCount(long svcMgmtNum, String yyyymm);
 }

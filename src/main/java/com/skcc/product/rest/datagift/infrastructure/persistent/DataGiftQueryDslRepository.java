@@ -3,22 +3,25 @@ package com.skcc.product.rest.datagift.infrastructure.persistent;
 import java.util.List;
 
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.QueryResults;
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.JPQLQuery;
 import com.skcc.product.rest.datagift.core.application.object.query.DataGiftQueryRequestDTO.SampleDomainKeyType;
 import com.skcc.product.rest.datagift.core.domain.entity.DataGiftAggregate;
 import com.skcc.product.rest.datagift.core.domain.entity.QDataGiftAggregate;
+import com.skcc.product.rest.datagift.core.domain.entity.QDataGiftHistory;
 import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftCustomQueryRepository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.NoRepositoryBean;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Repository
+@NoRepositoryBean
 public class DataGiftQueryDslRepository extends QuerydslRepositorySupport implements IDataGiftCustomQueryRepository {
 
     public DataGiftQueryDslRepository() {
@@ -111,4 +114,16 @@ public class DataGiftQueryDslRepository extends QuerydslRepositorySupport implem
         final List<DataGiftAggregate> queryResults = getQuerydsl().applyPagination(pageable, query).fetch();
         return new PageImpl<>(queryResults, pageable, query.fetchCount());
     }
+
+	@Override
+	public QueryResults<Tuple> getMonthDataGiftSendHistoryCount(long svcMgmtNum, String yyyymm) {
+		log.debug("svgMgmtNum [{}]", svcMgmtNum);
+		final QDataGiftHistory hist = QDataGiftHistory.dataGiftHistory;
+		
+		return from(hist)
+				.where(hist.opDtm.like(yyyymm))
+				.groupBy(hist.afmlyGiftYn)
+				.select(hist.afmlyGiftYn, hist.afmlyGiftYn.count())
+				.fetchResults();
+	}
 }

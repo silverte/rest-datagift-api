@@ -1,14 +1,17 @@
 package com.skcc.product.rest.datagift.core.domain;
 
 import com.skcc.product.rest.datagift.core.domain.enums.ProductGroup;
+
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Getter
 public class DataGiftLimit {
-    public final long generalCount = 2;
-    public long extraCount;
+    public final static long generalCount = 2;
+    public static long extraCount = 0;
 	
-	public DataGiftLimit getSendCountLimit(ProductGroup productGroup) {
+	public static void getSendCountLimit(ProductGroup productGroup) {
 	
 		switch(productGroup.name()) {
 		case "UNLIMITED": extraCount = 99999;
@@ -20,8 +23,7 @@ public class DataGiftLimit {
 	    default: extraCount = 0;
 		}
 		
-		log.debug("[extraCount ()]", extraCount);;
-		return this;
+		log.debug("[extraCount ()]", extraCount);
 	}
 
 }
