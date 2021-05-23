@@ -1,13 +1,23 @@
 package com.skcc.product.rest.datagift.core.port_infra.persistent;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-import com.skcc.product.rest.datagift.core.domain.entity.DataGiftHistory;
-import com.skcc.product.rest.datagift.core.domain.entity.DataGiftHistoryId;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-@Repository
-public interface IDataGiftQueryRepository extends IDataGiftCustomQueryRepository, JpaRepository<DataGiftHistory, DataGiftHistoryId>, QuerydslPredicateExecutor<DataGiftHistory> {
+import com.querydsl.core.QueryResults;
+import com.querydsl.core.Tuple;
+import com.skcc.product.rest.datagift.core.application.object.query.DataGiftQueryRequestDTO.SampleDomainKeyType;
+import com.skcc.product.rest.datagift.core.domain.entity.DataGiftAggregate;
 
+public interface IDataGiftQueryRepository {
+
+    public Page<DataGiftAggregate> searchAllAnd(final List<SampleDomainKeyType> searchKeys
+                                                    , final List<String> searchvalues
+                                                    , final Pageable pageable );
+
+    public Page<DataGiftAggregate> searchAllOr(final List<SampleDomainKeyType> searchKeys
+                                                    , final List<String> searchvalues
+                                                    , final Pageable pageable );
+    
 }

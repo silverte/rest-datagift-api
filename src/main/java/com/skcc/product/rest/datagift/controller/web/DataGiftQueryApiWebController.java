@@ -41,6 +41,12 @@ public class DataGiftQueryApiWebController {
                                     , HttpStatus.OK);
     }
     
+    public ResponseEntity<Object> getDataGiftCount( final DataGiftQueryRequestDTO dto) {
+    	log.debug("svcMgmtNum = [{}]", dto);
+    	
+    	return new ResponseEntity<>(dataGiftQueryApplicationService.queryCountDataGiftHistory(dto), HttpStatus.OK);
+    }
+    
     
 
 }

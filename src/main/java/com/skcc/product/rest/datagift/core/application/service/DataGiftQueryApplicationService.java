@@ -4,8 +4,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.skcc.product.rest.datagift.core.application.object.query.DataGiftQueryRequestDTO;
+import com.skcc.product.rest.datagift.core.domain.DataGift;
+import com.skcc.product.rest.datagift.core.domain.DonorServiceInfo;
 import com.skcc.product.rest.datagift.core.domain.entity.DataGiftAggregate;
 import com.skcc.product.rest.datagift.core.domain.vo.DataGiftHistoryCount;
+import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftHistoryQueryRepository;
 import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftQueryRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -37,8 +40,10 @@ public class DataGiftQueryApplicationService implements IDataGiftQueryApplicatio
     }
 
 	@Override
-	public DataGiftHistoryCount queryCountDataGiftHistory(DataGiftQueryRequestDTO dataGiftQueryRequestDTO) {
-		// TODO Auto-generated method stub
-		return null;
+	public DataGiftHistoryCount queryCountDataGiftHistory(DataGiftQueryRequestDTO dto) {
+		DonorServiceInfo service = new DonorServiceInfo(dto.getSvcMgmtNum());
+		DataGift dataGift = new DataGift(service);
+		
+		return dataGift.getDataGiftHistoryCount();
 	}
 }
