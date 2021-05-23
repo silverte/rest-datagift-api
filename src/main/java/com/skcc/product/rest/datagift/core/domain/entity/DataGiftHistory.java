@@ -14,7 +14,7 @@ import lombok.ToString;
 
 @ToString
 @AllArgsConstructor
-@Getter @Setter
+@Getter
 @Entity
 @Table(name = "ZORD_DATA_GIFT_HST")
 @Builder

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.skcc.product.rest.datagift.core.application.object.query.DataGiftQueryRequestDTO;
 import com.skcc.product.rest.datagift.core.domain.entity.DataGiftAggregate;
+import com.skcc.product.rest.datagift.core.domain.vo.DataGiftHistoryCount;
 import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftQueryRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -34,4 +35,10 @@ public class DataGiftQueryApplicationService implements IDataGiftQueryApplicatio
                                                         , dataGiftQueryRequestDTO.getSearchvalues()
                                                         , dataGiftQueryRequestDTO.of() );
     }
+
+	@Override
+	public DataGiftHistoryCount queryCountDataGiftHistory(DataGiftQueryRequestDTO dataGiftQueryRequestDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -44,8 +44,8 @@ public class DataGift {
 		DataGiftLimit.getSendCountLimit(this.getProductGroup());
 		
 		/*당월 선물 이력조회 */
-		QueryResults<Tuple> queryResults = dataGiftQueryRepository.getMonthDataGiftSendHistoryCount(Long.valueOf(serviceInfo.svcMgmtNum), "202105");
-		List<Tuple> list = queryResults.getResults();
+		//QueryResults<Tuple> queryResults = dataGiftQueryRepository.getMonthDataGiftSendHistoryCount(Long.valueOf(serviceInfo.svcMgmtNum), "202105");
+		//List<Tuple> list = queryResults.getResults();
 		
 		/* VO setup */
 		count.setGeneralCount(DataGiftLimit.generalCount);

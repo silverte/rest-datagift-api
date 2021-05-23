@@ -3,6 +3,8 @@ package com.skcc.product.rest.datagift.core.application.object.query;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
@@ -19,6 +21,10 @@ public class DataGiftQueryRequestDTO {
 
     final static int DEFAULT_SIZE = 10;
     final static int MAX_SIZE = 50;
+    
+    //조회 조건
+    @NotEmpty
+    private String svcMgmtNum;
 
     //검색 조건
     private List<SampleDomainKeyType> searchKeys;

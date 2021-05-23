@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/rest/sample")
+@RequestMapping("/api/rest/datagift")
 public class DataGiftQueryApiWebController {
 
     @Autowired
@@ -40,5 +40,7 @@ public class DataGiftQueryApiWebController {
         return new ResponseEntity<>( dataGiftQueryApplicationService.queryAllOrUserStorySampleDomain(dataGiftQueryRequestDTO)
                                     , HttpStatus.OK);
     }
+    
+    
 
 }
