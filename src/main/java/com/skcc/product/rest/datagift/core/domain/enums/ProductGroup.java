@@ -9,7 +9,7 @@ public enum ProductGroup {
     UNLIMITED("T-가족결합", Arrays.asList("2133")),
     FAMILY_VIP("온가족그룹+요금제그룹", Arrays.asList("NA00005958", "NA00005959", "NA00006157", "NA00006404", "NA00006538", "NA00006538", "NA00006539")),
     FAMILY("온가족그룹", Arrays.asList("2059", "2087", "2053", "2172", "2193", "2198", "2231")),
-    GENERAL("일반", Collections.EMPTY_LIST);
+    GENERAL("미가입", Collections.EMPTY_LIST);
 
     private String title;
     private List<String> productList;

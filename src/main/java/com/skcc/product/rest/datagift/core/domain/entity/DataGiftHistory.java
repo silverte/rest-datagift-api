@@ -9,12 +9,14 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @ToString
 @AllArgsConstructor
-@Getter
+@NoArgsConstructor
+@Getter @Setter
 @Entity
 @Table(name = "ZORD_DATA_GIFT_HST")
 @Builder
@@ -24,26 +26,26 @@ public class DataGiftHistory extends AbstractAuditEntity {
 	
 	@Id
 	@Column(nullable = false, length = 10)
-	private long svcMgmtNum;
+	private String svcMgmtNum;
 	
 	@Id
 	@Column(nullable = false, length = 14)
 	private String opDtm;
 	
 	@Column(nullable = false, length = 10)
-	private long befrSvcMgmtNum;
+	private String befrSvcMgmtNum;
 	
 	@Column(nullable = false, length = 1)
-	private String DataGiftOpStCd;
+	private String dataGiftOpStCd;
 	
 	@Column(nullable = false, length = 9)
-	private String GiftDataQty;
+	private String giftDataQty;
 	
 	@Column(nullable = false, length = 10)
 	private String opSaleOrgId;
 	
 	@Column(nullable = false, length = 10)
-	private String OprId;
+	private String oprId;
 	
 	@Column(nullable = true, length = 10)
 	private String prodId;
@@ -52,10 +54,10 @@ public class DataGiftHistory extends AbstractAuditEntity {
 	private String befrProdId;
 	
 	@Column(nullable = true, length = 10)
-	private long custNum;
+	private String custNum;
 	
 	@Column(nullable = true, length = 10)
-	private long befrCustNum;
+	private String befrCustNum;
 	
 	@Column(nullable = true, length = 4)
 	private String giftIFRsltCd;

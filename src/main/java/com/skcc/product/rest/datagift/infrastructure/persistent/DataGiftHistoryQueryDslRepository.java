@@ -4,22 +4,23 @@ import com.querydsl.core.QueryResults;
 import com.querydsl.core.Tuple;
 import com.skcc.product.rest.datagift.core.domain.entity.DataGiftHistory;
 import com.skcc.product.rest.datagift.core.domain.entity.QDataGiftHistory;
-import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftCustomQueryRepository;
+import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftHistoryQueryRepository;
+
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
-import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.stereotype.Repository;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@NoRepositoryBean
-public class DataGiftHistoryQueryDslRepository extends QuerydslRepositorySupport implements IDataGiftCustomQueryRepository {
+@Repository
+public class DataGiftHistoryQueryDslRepository extends QuerydslRepositorySupport implements IDataGiftHistoryQueryRepository {
 
     public DataGiftHistoryQueryDslRepository() {
         super(DataGiftHistory.class);
     }
 
-	@Override
-	public QueryResults<Tuple> getMonthDataGiftSendHistoryCount(final long svcMgmtNum, final String yyyymm) {
+	//@Override
+	public QueryResults<Tuple> getMonthDataGiftSendHistoryCount(String svcMgmtNum, String yyyymm) {
 		log.debug("svgMgmtNum [{}]", svcMgmtNum);
 		final QDataGiftHistory hist = QDataGiftHistory.dataGiftHistory;
 		

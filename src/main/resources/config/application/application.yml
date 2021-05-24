@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: rest-domain-api
+    name: rest-datagift-api
   profiles:
     active: local
 

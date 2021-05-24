@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/rest/datagift")
+@RequestMapping("/api/v1/datagift")
 public class DataGiftQueryApiWebController {
 
     @Autowired
@@ -41,6 +41,7 @@ public class DataGiftQueryApiWebController {
                                     , HttpStatus.OK);
     }
     
+    @GetMapping("/count")
     public ResponseEntity<Object> getDataGiftCount( final DataGiftQueryRequestDTO dto) {
     	log.debug("svcMgmtNum = [{}]", dto);
     	

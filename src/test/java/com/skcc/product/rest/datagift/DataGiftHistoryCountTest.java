@@ -20,9 +20,9 @@ public class DataGiftHistoryCountTest {
 	public void dataGiftSendHistoryCount() {
 		
 		/*당월 선물 이력조회 */
-		QueryResults<Tuple> queryResults = dataGiftHistoryQueryRepository.getMonthDataGiftSendHistoryCount(Long.valueOf("7123456789"), "202105");
-		List<Tuple> list = queryResults.getResults();
-		log.info("[{}]", list);
+	//	QueryResults<Tuple> queryResults = dataGiftHistoryQueryRepository.getMonthDataGiftSendHistoryCount(Long.valueOf("7123456789"), "202105");
+	//	List<Tuple> list = queryResults.getResults();
+	//	log.info("[{}]", list);
 		;
 	}
 

@@ -5,5 +5,5 @@ import com.querydsl.core.Tuple;
 
 public interface IDataGiftCustomQueryRepository {
     
-    public QueryResults<Tuple> getMonthDataGiftSendHistoryCount(final long svcMgmtNum, final String yyyymm);
+    public QueryResults<Tuple> getMonthDataGiftSendHistoryCount(final long svcMgmtNum);
 }
