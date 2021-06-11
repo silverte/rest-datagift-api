@@ -22,7 +22,7 @@ import lombok.ToString;
 @Builder
 @IdClass(DataGiftHistoryId.class)
 
-public class DataGiftHistory extends AbstractAuditEntity {
+public class DataGiftHistory {
 	
 	@Id
 	@Column(nullable = false, length = 10)
@@ -35,17 +35,15 @@ public class DataGiftHistory extends AbstractAuditEntity {
 	@Column(nullable = false, length = 10)
 	private String befrSvcMgmtNum;
 	
+	@Column(nullable = false, length = 15)
+	private String befrSvcNum;
+	
+	// 1:요청 2:성공 3:실패
 	@Column(nullable = false, length = 1)
 	private String dataGiftOpStCd;
 	
 	@Column(nullable = false, length = 9)
 	private String giftDataQty;
-	
-	@Column(nullable = false, length = 10)
-	private String opSaleOrgId;
-	
-	@Column(nullable = false, length = 10)
-	private String oprId;
 	
 	@Column(nullable = true, length = 10)
 	private String prodId;
@@ -58,35 +56,12 @@ public class DataGiftHistory extends AbstractAuditEntity {
 	
 	@Column(nullable = true, length = 10)
 	private String befrCustNum;
-	
-	@Column(nullable = true, length = 4)
-	private String giftIFRsltCd;
 
+	// G1:데이터선물 GC:자동선물 GD:선물Day 
 	@Column(nullable = true, length = 2)
 	@Builder.Default String dataGiftTypCd = "G1";
 	
 	@Column(nullable = false, length = 1)
 	@Builder.Default private String afmlyGiftYn = "N";
-	
-	@Column(nullable = false, length = 2)
-	@Builder.Default private String giftDayClCd = "00";
-
-	@Column(nullable = true, length = 9)
-	private long rlGiftDataQty;
-	
-	@Column(nullable = true, length = 2)
-	private String autoChrgOpCd;
-	
-	@Column(nullable = true, length = 15)
-	private long autoGiftSerNum;
-	
-	@Column(nullable = true, length = 2)
-	private long giftReqCnt;
-	
-	@Column(nullable = true, length = 2)
-	private long giftOpRsltCnt;
-	
-	@Column(nullable = true, length = 14)
-	private String giftReqFstOpDtm;	
 
 }

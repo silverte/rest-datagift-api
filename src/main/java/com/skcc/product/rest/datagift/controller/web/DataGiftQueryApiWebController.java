@@ -27,27 +27,12 @@ public class DataGiftQueryApiWebController {
     public ResponseEntity<Object> getAndSampleDomainAggregate( final DataGiftQueryRequestDTO dataGiftQueryRequestDTO ){
         log.debug("[Controller] SampleDomainWebController Called - getSampleDomainAggregate");
         
-        dataGiftQueryApplicationService.queryAllAndUserStorySampleDomain(dataGiftQueryRequestDTO);
-
-        return new ResponseEntity<>( dataGiftQueryApplicationService.queryAllAndUserStorySampleDomain(dataGiftQueryRequestDTO)
-                                    , HttpStatus.OK);
-    }
-
-    @GetMapping("/or")
-    public ResponseEntity<Object> getOrSampleDomainAggregate( final DataGiftQueryRequestDTO dataGiftQueryRequestDTO ){
-        log.debug("[Controller] SampleDomainWebController Called - getSampleDomainAggregate");
-        
-        return new ResponseEntity<>( dataGiftQueryApplicationService.queryAllOrUserStorySampleDomain(dataGiftQueryRequestDTO)
+        return new ResponseEntity<>( dataGiftQueryApplicationService.queryDataGiftHistory(dataGiftQueryRequestDTO)
                                     , HttpStatus.OK);
     }
     
-    @GetMapping("/count")
-    public ResponseEntity<Object> getDataGiftCount( final DataGiftQueryRequestDTO dto) {
-    	log.debug("svcMgmtNum = [{}]", dto);
-    	
-    	return new ResponseEntity<>(dataGiftQueryApplicationService.queryCountDataGiftHistory(dto), HttpStatus.OK);
+    @GetMapping("hello")
+    public ResponseEntity<Object> hello(){
+    	return new ResponseEntity<>("hello world!", HttpStatus.OK);
     }
-    
-    
-
-}
+} 

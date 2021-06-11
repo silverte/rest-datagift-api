@@ -7,7 +7,10 @@ import com.skcc.product.rest.datagift.core.application.object.query.DataGiftQuer
 import com.skcc.product.rest.datagift.core.domain.DataGift;
 import com.skcc.product.rest.datagift.core.domain.DonorServiceInfo;
 import com.skcc.product.rest.datagift.core.domain.entity.DataGiftAggregate;
+import com.skcc.product.rest.datagift.core.domain.entity.DataGiftHistory;
 import com.skcc.product.rest.datagift.core.domain.vo.DataGiftHistoryCount;
+import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftCommmandRepository;
+import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftHistoryCommmandRepository;
 import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftHistoryQueryRepository;
 import com.skcc.product.rest.datagift.core.port_infra.persistent.IDataGiftQueryRepository;
 
@@ -20,30 +23,33 @@ import lombok.extern.slf4j.Slf4j;
 public class DataGiftQueryApplicationService implements IDataGiftQueryApplicationService {
 
     private final IDataGiftQueryRepository dataGiftQueryRepository;
-    
-    @Override
-    public Page<DataGiftAggregate> queryAllAndUserStorySampleDomain(final DataGiftQueryRequestDTO dataGiftQueryRequestDTO) {
-        log.debug("[Service] SampleDomainApplicationService Called - queryAllAndUserStorySampleDomain [{}]", dataGiftQueryRequestDTO);
-
-        return dataGiftQueryRepository.searchAllAnd( dataGiftQueryRequestDTO.getSearchKeys()
-                                                        , dataGiftQueryRequestDTO.getSearchvalues()
-                                                        , dataGiftQueryRequestDTO.of() );
-    }
-
-    @Override
-    public Page<DataGiftAggregate> queryAllOrUserStorySampleDomain(DataGiftQueryRequestDTO dataGiftQueryRequestDTO) {
-        log.debug("[Service] SampleDomainApplicationService Called - queryAllOrUserStorySampleDomain [{}]", dataGiftQueryRequestDTO);
-
-        return dataGiftQueryRepository.searchAllOr( dataGiftQueryRequestDTO.getSearchKeys()
-                                                        , dataGiftQueryRequestDTO.getSearchvalues()
-                                                        , dataGiftQueryRequestDTO.of() );
-    }
+    private final IDataGiftHistoryCommmandRepository repo;
 
 	@Override
-	public DataGiftHistoryCount queryCountDataGiftHistory(DataGiftQueryRequestDTO dto) {
-		DonorServiceInfo service = new DonorServiceInfo(dto.getSvcMgmtNum());
-		DataGift dataGift = new DataGift(service);
-		
-		return dataGift.getDataGiftHistoryCount();
+	public Page<DataGiftHistory> queryDataGiftHistory(DataGiftQueryRequestDTO dataGiftQueryRequestDTO) {
+        log.debug("[Service] SampleDomainApplicationService Called - queryAllOrUserStorySampleDomain [{}]", dataGiftQueryRequestDTO);
+
+        
+        DataGiftHistory hist = DataGiftHistory.builder()
+                .svcMgmtNum("7123456789")
+                .opDtm("20210501092530")
+                .befrCustNum("9777755550")
+                .befrProdId("NA00006404")
+                .befrSvcMgmtNum("7777755555")
+                .befrSvcNum("01091110424")
+                .custNum("9888855550")
+                .dataGiftOpStCd("1")
+                .dataGiftTypCd("G1")
+                .giftDataQty("1024")
+                .prodId("NA00006404")
+                .build();
+		log.debug(hist.toString());
+		repo.save(hist);
+        
+		return dataGiftQueryRepository.searchAll(dataGiftQueryRequestDTO.getSvcMgmtNum()
+				                                   , dataGiftQueryRequestDTO.getFromDate()
+				                                   , dataGiftQueryRequestDTO.getToDate()
+				                                   , dataGiftQueryRequestDTO.of());
 	}
+
 }
